@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "208381317519",
+    "firebase_url": "https://good-food-app-b6f11-default-rtdb.firebaseio.com",
+    "project_id": "good-food-app-b6f11",
+    "storage_bucket": "good-food-app-b6f11.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:208381317519:android:e1fa3d116780350854fbfa",
+        "android_client_info": {
+          "package_name": "com.example.food_delivery_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBBeL8MRJGOkFxuE5_hZ-kUyOeR0qVrvUo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
