@@ -1,16 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:food_delivery_app/Components/app_colors.dart';
+import 'package:food_delivery_app/Components/ButtomNav/my_bottom_navbar.dart';
 import 'package:food_delivery_app/Providers/auth_provider.dart';
-import 'package:food_delivery_app/Screens/login_screen.dart';
-
-import 'package:food_delivery_app/Screens/onborading_screen.dart';
+import 'package:food_delivery_app/Providers/meal_provider.dart';
+import 'package:food_delivery_app/Screens/Users/onborading_screen.dart';
 import 'package:provider/provider.dart';
-
+import 'package:food_delivery_app/Providers/favorite_provider.dart';
+import 'package:food_delivery_app/Providers/cart_provider.dart';
 
 void main() {
   runApp(MultiProvider(providers: [
 
-    ChangeNotifierProvider(create: (_) => AuthProvider())
+        ChangeNotifierProxyProvider<AuthProvider, MealProvider>(
+          create: (ctx) => MealProvider(null, null),
+          update: (ctx, auth, previous) =>
+              MealProvider(auth.getUserId, auth.getTokenValue),
+        ),
+
+           ChangeNotifierProvider(create: (_) => AuthProvider()),
+           ChangeNotifierProvider(create: (_) => FavoriteProvider()),
+           ChangeNotifierProvider(create: (_) => CartProvider()),
+           
   ],
   child: const MyApp()));
 }
@@ -29,8 +38,14 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Resturant App',
      theme: ThemeData(primarySwatch: Colors.brown),
-      home: auth.getToken ? LoginScreen() :  OnboradingScreen(),
-      //AnimatedSplashScreen(),
+      home: 
+      
+      //const LoginScreen(),
+      
+      auth.getToken
+    ? const MyBottomNavBar()
+    : const OnboradingScreen(),
+      
      
     );
       });
